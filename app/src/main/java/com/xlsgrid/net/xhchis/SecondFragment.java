@@ -75,6 +75,8 @@ public class SecondFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 therapy.stop();
+                NavHostFragment.findNavController(SecondFragment.this)
+                        .navigate(R.id.action_SecondFragment_to_FirstFragment);
             }
         });
 
@@ -98,6 +100,7 @@ public class SecondFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+        therapy.stop();
     }
 
     private void initTherapy() {
@@ -120,8 +123,6 @@ public class SecondFragment extends Fragment {
             @Override
             public void onFinished() {
                 Log.e(TAG, "onFinished");
-                NavHostFragment.findNavController(SecondFragment.this)
-                        .navigate(R.id.action_SecondFragment_to_FirstFragment);
             }
 
             @Override
