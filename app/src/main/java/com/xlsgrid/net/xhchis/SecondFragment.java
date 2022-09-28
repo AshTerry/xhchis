@@ -116,7 +116,7 @@ public class SecondFragment extends Fragment {
             @Override
             public void onTick(long l) {
                 Duration current = Duration.ofSeconds(l);
-                String progressValue = current.toString();
+                String progressValue = current.toString() + "  all:" + therapy.getDuration().toString();
                 binding.txtTime.setText(progressValue);
             }
 
