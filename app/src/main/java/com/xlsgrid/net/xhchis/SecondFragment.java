@@ -49,6 +49,11 @@ public class SecondFragment extends Fragment {
                     String solutionJSON = getArguments().getString("solution");
                     therapy.prepare(solutionJSON, new IPrepareCallback() {
                         @Override
+                        public void onError(@NonNull Exception e) {
+                            Log.e(TAG, e.toString());
+                        }
+
+                        @Override
                         public void onAllDone(@Nullable Exception e) {
                             if (null == e) {
                                 therapy.play();
@@ -60,6 +65,8 @@ public class SecondFragment extends Fragment {
                         public void onPredownloadDone() {
                             therapy.play();
                         }
+
+
                     });
                 } else {
                     if (therapy.isPlaying()) {
